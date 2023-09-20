@@ -53,7 +53,7 @@ class addVideoScreen extends StatelessWidget {
               child: Text("Add Video" , style: TextStyle(
                   fontSize: 25,
                   color: Colors.white,
-                  fontWeight: FontWeight.bold
+                  fontWeight: FontWeight.bold,
               ),),
             ),
           ),
