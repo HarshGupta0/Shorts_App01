@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:shorts_app/view/screens/Add_videos.dart';
 const backgroundColor =Colors.black;
@@ -10,3 +12,8 @@ var pageindex=[
   Text('message'),
   Text('profile'),
 ];
+getRandomColor() => [
+  Colors.blueAccent,
+  Colors.redAccent,
+  Colors.greenAccent,
+][Random().nextInt(3)];

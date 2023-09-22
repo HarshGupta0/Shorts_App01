@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shorts_app/constants.dart';
 import 'package:shorts_app/main.dart';
 import 'package:shorts_app/view/widgets/Input_Text.dart';
+import 'package:shorts_app/view/widgets/glitch.dart';
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
   @override
@@ -20,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("LOGIN HERE",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 25),),
+              GlithEffect(child: Text("Shorts App",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 25),)),
               SizedBox(height: 30,),
               InputText(controller: emailController,
                   myIcon: Icons.email_outlined, MylableText: "Email",),
