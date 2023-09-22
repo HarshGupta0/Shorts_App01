@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shorts_app/constants.dart';
+import 'package:shorts_app/view/screens/auth/login_screen_ui.dart';
 import 'package:shorts_app/view/screens/home.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: backgroundColor,
       ),
-      home:Home(),
+      home:LoginScreen(),
     );
   }
 }
