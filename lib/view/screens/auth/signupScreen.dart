@@ -27,11 +27,11 @@ class SignUpScreenState extends State<SignUpScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                GlithEffect(child: Text("SignUp Here",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 30),)),
+                GlithEffect(child: Text("Welcome !!",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 30),)),
                 SizedBox(height: 30,),
                 Stack(
                   children: [
-                    CircleAvatar(backgroundImage:AssetImage("asset/th.jpg"),radius: 60,),
+                    CircleAvatar(backgroundImage:AssetImage("asset/img.png"),radius: 60,),
                     Positioned(
                       bottom: 0,
                         // top: 0,

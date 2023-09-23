@@ -1,6 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:shorts_app/Controller/auth_controller.dart';
 import 'package:shorts_app/constants.dart';
 import 'package:shorts_app/view/screens/auth/login_screen_ui.dart';
 import 'package:shorts_app/view/screens/auth/signupScreen.dart';
@@ -8,10 +11,11 @@ import 'package:shorts_app/view/screens/home.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp().then((value) {
+    Get.put(Authcontroller());
+  });
   runApp(MyApp());
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({key});
 
