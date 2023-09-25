@@ -88,7 +88,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                   controller: setpasswordController,
                   myIcon: Icons.password_sharp,
                   toHide: true,
-                  MylableText: "Set password",
+                  MylableText: "Set Password",
                 ),
                 SizedBox(
                   height: 20,
@@ -97,7 +97,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                   controller: ConfirmpasswordController,
                   myIcon: Icons.password_sharp,
                   toHide: true,
-                  MylableText: "confirm password",
+                  MylableText: "confirm Password",
                 ),
                 SizedBox(
                   height: 50,
