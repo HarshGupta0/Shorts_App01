@@ -9,7 +9,7 @@ import 'package:shorts_app/view/screens/auth/login_screen_ui.dart';
 import 'package:shorts_app/view/screens/auth/signupScreen.dart';
 import 'package:shorts_app/view/screens/home.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp().then((value) {
     Get.put(Authcontroller());
