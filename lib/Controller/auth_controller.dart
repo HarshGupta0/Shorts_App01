@@ -9,37 +9,23 @@ import 'package:image_picker/image_picker.dart';
 
 import '../model/usermodel.dart';
 
-class AuthController extends GetxController {
-  File? proImg;
-
-  PickImage() async {
-    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (image != null) {
-      proImg = File(image.path);
-    }
+class AuthenticationController extends GetxController
+{
+  static AuthenticationController instanceAuth =Get.find();
+  late Rx<File?> _pickedFile;
+  File ? get profileImage => _pickedFile.value;
+  void chooseImageFromGallery()async {
+   final pickedImageFile =await ImagePicker().pickImage(source: ImageSource.gallery);
+   if(profileImage !=null){
+     Get.snackbar("Profile Image"," Successfully Selected Profile image");
+   }
+    _pickedFile=Rx<File?>(File(pickedImageFile!.path));
   }
-
-  Future<void> signUp(String username, String password, String email, File? image) async {
-    try {
-      if (username.isNotEmpty && password.isNotEmpty && email.isNotEmpty && image != null) {
-        UserCredential credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
-        String downloadUrl = await _uploadProfilePhoto(image);
-
-        MyUser user = MyUser(name: username, email: email, uid: credential.user!.uid, profilePhoto: downloadUrl);
-        await FirebaseFirestore.instance.collection('users').doc(credential.user!.uid).set(user.toJson());
-      } else {
-        Get.snackbar("Error creating account", "Please fill all fields correctly");
-      }
-    } catch (e) {
-      print(e);
-      Get.snackbar("Error Occurred", "Failed to create account. Please try again.");
+  void captureImageWithCamrea()async {
+    final pickedImageFile =await ImagePicker().pickImage(source: ImageSource.camera);
+    if(profileImage !=null){
+      Get.snackbar("Profile Image"," Successfully Selected Profile image");
     }
-  }
-
-  Future<String> _uploadProfilePhoto(File image) async {
-    Reference ref = FirebaseStorage.instance.ref().child('ProfilePics').child(FirebaseAuth.instance.currentUser!.uid);
-    UploadTask uploadTask = ref.putFile(image);
-    TaskSnapshot snapshot = await uploadTask;
-    return await snapshot.ref.getDownloadURL();
+    _pickedFile=Rx<File?>(File(pickedImageFile!.path));
   }
 }

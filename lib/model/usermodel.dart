@@ -12,7 +12,7 @@ class MyUser{
     required this.profilePhoto,
 
 });
-  //App (data)--> firebase
+  //App (data)--> firebase (converting to json format)
   Map<String , dynamic> toJson ()=>{
       "name":name,
       "profilePhoto":profilePhoto,

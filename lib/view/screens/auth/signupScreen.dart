@@ -20,6 +20,7 @@ class SignUpScreenState extends State<SignUpScreen> {
   TextEditingController usernameController = new TextEditingController();
   TextEditingController setpasswordController = new TextEditingController();
   TextEditingController ConfirmpasswordController = new TextEditingController();
+  var authenticationController =AuthenticationController.instanceAuth;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +44,8 @@ class SignUpScreenState extends State<SignUpScreen> {
                 ),
                 InkWell(
                   onTap: (){
-                     AuthController().instance.proimg;
+                     // AuthController().instance.proimg;
+                    authenticationController.chooseImageFromGallery();
                   },
                   child:Stack(
                   children: [
@@ -105,12 +107,12 @@ class SignUpScreenState extends State<SignUpScreen> {
                 ElevatedButton(
                   onPressed: () {
                     // Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>LoginScreen()));
-                    Authcontroller().instance.SignUp(
-                        usernameController.toString(),
-                        setpasswordController.toString(),
-                        emailController.toString(),
-                        Authcontroller().instance.proimg
-                    );
+                    // Authcontroller().instance.SignUp(
+                    //     usernameController.toString(),
+                    //     setpasswordController.toString(),
+                    //     emailController.toString(),
+                    //     Authcontroller().instance.proimg
+                    // );
                   },
                   child: Container(
                     alignment: Alignment.center,
