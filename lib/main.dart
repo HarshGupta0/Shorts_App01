@@ -12,7 +12,7 @@ import 'package:shorts_app/view/screens/home.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp().then((value) {
-    Get.put(Authcontroller());
+    Get.put(AuthController());
   });
   runApp(MyApp());
 }

@@ -43,7 +43,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                 ),
                 InkWell(
                   onTap: (){
-                     Authcontroller().instance.proimg;
+                     AuthController().instance.proimg;
                   },
                   child:Stack(
                   children: [

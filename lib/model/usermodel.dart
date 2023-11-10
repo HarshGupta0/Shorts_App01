@@ -21,11 +21,11 @@ class MyUser{
     };
   // firebase --> app(user)//
   static MyUser fromSnap(DocumentSnapshot snap){
-    var snapshot = snap.data() as Map<String , dynamic>;
+    var datasnapshot = snap.data() as Map<String , dynamic>;
     return MyUser(
-        name: snapshot['name'],
-        email: snapshot['email'],
-        uid: snapshot['uid'],
-        profilePhoto: snapshot['profilePhoto']);
+        name: datasnapshot['name'],
+        email: datasnapshot['email'],
+        uid: datasnapshot['uid'],
+        profilePhoto: datasnapshot['profilePhoto']);
   }
 }
