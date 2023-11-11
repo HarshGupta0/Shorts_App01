@@ -50,20 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyC4w4HiWMimL8Mwj73hsVVZr73asRH4Bj4',
-    appId: '1:596844028392:android:7e6bc0bd4df5883be4445d',
-    messagingSenderId: '596844028392',
-    projectId: 'flutterloginsys-d8902',
-    storageBucket: 'flutterloginsys-d8902.appspot.com',
+    apiKey: 'AIzaSyA18CEEorkM9bdC8EMTl4_BYNJtK11uK7M',
+    appId: '1:1052212923239:android:9d108b351a7cb46695bdc2',
+    messagingSenderId: '1052212923239',
+    projectId: 'shortsapp-b0f40',
+    storageBucket: 'shortsapp-b0f40.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDLRJ20irXPw5ClX10p0-Emjg1ypqINrHc',
-    appId: '1:596844028392:ios:d2d9d4de8183ad2ce4445d',
-    messagingSenderId: '596844028392',
-    projectId: 'flutterloginsys-d8902',
-    storageBucket: 'flutterloginsys-d8902.appspot.com',
-    androidClientId: '596844028392-te1ccmdh62gpucpgpupldd2qhqpci0hb.apps.googleusercontent.com',
+    apiKey: 'AIzaSyC_ARhWeWt4lSteBS5yi68KTZUMAkTd7QY',
+    appId: '1:1052212923239:ios:d5fd39be9057a39995bdc2',
+    messagingSenderId: '1052212923239',
+    projectId: 'shortsapp-b0f40',
+    storageBucket: 'shortsapp-b0f40.appspot.com',
     iosBundleId: 'com.example.shortsApp',
   );
 }
