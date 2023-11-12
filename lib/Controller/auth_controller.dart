@@ -26,6 +26,6 @@ class AuthenticationController extends GetxController
     if(profileImage !=null){
       Get.snackbar("Profile Image"," Successfully Selected Profile image");
     }
-    _pickedFile=Rx<File?>(File(pickedImageFile!.path));
+    // _pickedFile=Rx<File?>(File(pickedImageFile!.path));
   }
 }
