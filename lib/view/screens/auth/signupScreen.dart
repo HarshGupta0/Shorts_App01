@@ -20,7 +20,7 @@ class SignUpScreenState extends State<SignUpScreen> {
   TextEditingController usernameController = new TextEditingController();
   TextEditingController setpasswordController = new TextEditingController();
   TextEditingController ConfirmpasswordController = new TextEditingController();
-  var authenticationController =AuthenticationController.instanceAuth;
+  var authenticationController = AuthenticationController.instanceAuth;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
