@@ -113,11 +113,23 @@ class SignUpScreenState extends State<SignUpScreen> {
                     //     emailController.toString(),
                     //     Authcontroller().instance.proimg
                     // );
+                    if(authenticationController.profileImage !=null
+                        && setpasswordController.text.isNotEmpty
+                        && usernameController.text.isNotEmpty
+                        && emailController.text.isNotEmpty
+                    ){
+                      authenticationController.createAccountForNewUser(
+                        authenticationController.profileImage!,
+                        usernameController.text,
+                        emailController.text,
+                        setpasswordController.text,
+                      );
+                    }
                   },
                   child: Container(
                     alignment: Alignment.center,
                     width: 60,
-                    child: Text("LOGIN"),
+                    child: Text("Register"),
                   ),
                   style: ElevatedButton.styleFrom(primary: buttonColor),
                 ),
