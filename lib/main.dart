@@ -5,13 +5,16 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:shorts_app/Controller/auth_controller.dart';
 import 'package:shorts_app/constants.dart';
+import 'package:shorts_app/firebase_options.dart';
 import 'package:shorts_app/view/screens/auth/login_screen_ui.dart';
 import 'package:shorts_app/view/screens/auth/signupScreen.dart';
 import 'package:shorts_app/view/screens/home.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp().then((value) {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  ).then((value) {
     Get.put(AuthenticationController());
   });
   runApp(MyApp());

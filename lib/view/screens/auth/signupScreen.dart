@@ -44,8 +44,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                 ),
                 InkWell(
                   onTap: (){
-                     // AuthController().instance.proimg;
-                    authenticationController.chooseImageFromGallery();
+                     // AuthController().instance.proim
                   },
                   child:Stack(
                   children: [
@@ -59,7 +58,9 @@ class SignUpScreenState extends State<SignUpScreen> {
                         right: 0,
                         // left: 0,
                         child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            authenticationController.chooseImageFromGallery();
+                          },
                           icon: Icon(
                             Icons.camera_alt,
                             size: 34,
@@ -106,13 +107,6 @@ class SignUpScreenState extends State<SignUpScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    // Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>LoginScreen()));
-                    // Authcontroller().instance.SignUp(
-                    //     usernameController.toString(),
-                    //     setpasswordController.toString(),
-                    //     emailController.toString(),
-                    //     Authcontroller().instance.proimg
-                    // );
                     if(authenticationController.profileImage !=null
                         && setpasswordController.text.isNotEmpty
                         && usernameController.text.isNotEmpty

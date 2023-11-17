@@ -12,7 +12,7 @@ import '../model/usermodel.dart';
 class AuthenticationController extends GetxController
 {
   static AuthenticationController instanceAuth =Get.find();
-  late Rx<File?> _pickedFile;
+  late Rx<File?> _pickedFile = Rx<File?>(null);
   File ? get profileImage => _pickedFile.value;
   void chooseImageFromGallery()async {
    final pickedImageFile =await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -39,7 +39,7 @@ class AuthenticationController extends GetxController
       );
 
       // 2. Save the user profile image to Firebase Storage
-      String imagedownloadUrl = await _uploadProfilePhoto(credential.user!, imageFile);
+      String imagedownloadUrl = await uploadProfilePhoto(credential.user!, imageFile);
 
       // 3. Save user data to the Firestore database
       MyUser user = MyUser(
@@ -60,7 +60,7 @@ class AuthenticationController extends GetxController
     }
   }
 
-  Future<String> _uploadProfilePhoto(User user, File imageFile) async {
+  Future<String> uploadProfilePhoto(User user, File imageFile) async {
     try {
       Reference ref = FirebaseStorage.instance.ref().child('ProfilePics').child(user.uid);
       UploadTask uploadTask = ref.putFile(imageFile);
