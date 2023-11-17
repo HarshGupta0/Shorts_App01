@@ -21,12 +21,12 @@ class AuthenticationController extends GetxController
    }
     _pickedFile=Rx<File?>(File(pickedImageFile!.path));
   }
-  // void captureImageWithCamera()async {
-  //   final pickedImageFile =await ImagePicker().pickImage(source: ImageSource.camera);
-  //   if(profileImage !=null){
-  //     Get.snackbar("Profile Image",
-  //         " Successfully Selected Profile image");
-  //   }
-  //   _pickedFile=Rx<File?>(File(pickedImageFile!.path));
-  // }
+  void captureImageWithCamera()async {
+    final pickedImageFile =await ImagePicker().pickImage(source: ImageSource.camera);
+    if(profileImage !=null){
+      Get.snackbar("Profile Image",
+          " Successfully Selected Profile image");
+    }
+    _pickedFile=Rx<File?>(File(pickedImageFile!.path));
+  }
 }
