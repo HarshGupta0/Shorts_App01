@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -6,6 +7,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:shorts_app/view/screens/auth/signupScreen.dart';
+import 'package:shorts_app/view/screens/home.dart';
 
 import '../model/usermodel.dart';
 
@@ -30,7 +33,8 @@ class AuthenticationController extends GetxController
     _pickedFile=Rx<File?>(File(pickedImageFile!.path));
   }
 
-  void createAccountForNewUser(File imageFile, String userName, String userEmail, String userPassword) async {
+  void createAccountForNewUser(File imageFile, String userName, String userEmail, String userPassword,  BuildContext context
+      ) async {
     try {
       // 1. Create user in Firebase Auth
       UserCredential credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -51,7 +55,7 @@ class AuthenticationController extends GetxController
 
       await FirebaseFirestore.instance.collection('users').doc(credential.user!.uid).set(user.toJson());
       Get.snackbar("Account created ", " Welcome ");
-
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Home()));
       // Optional: You may perform additional actions or UI updates after account creation.
     } catch (e) {
       // Handle any errors that occurred during the account creation process.
@@ -72,5 +76,29 @@ class AuthenticationController extends GetxController
       return ""; // You may want to handle this more gracefully in your application.
     }
   }
+// user signin method
+  Future<void> signInUser(String userEmail, String userPassword, BuildContext context) async {
+    try {
+      // 1. Sign in user using Firebase Auth
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: userEmail,
+        password: userPassword,
+      );
 
+      // 2. Handle successful sign-in (e.g., navigate to the home screen)
+
+      Get.snackbar("Sign In Successful", "Welcome back!");
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Home()));
+
+      // Optional: You may perform additional actions or UI updates after sign-in.
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found' || e.code == 'wrong-password') {
+        Get.snackbar("Sign In Failed", "Invalid email or password.");
+      } else {
+        Get.snackbar("Sign In Failed", "Error: ${e.message}");
+      }
+    } catch (e) {
+      Get.snackbar("Sign In Failed", "Error: $e");
+    }
+  }
 }

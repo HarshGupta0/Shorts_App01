@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'dart:io';
 import 'package:shorts_app/Controller/auth_controller.dart';
-import 'package:shorts_app/view/screens/auth/login_screen_ui.dart';
 import 'package:shorts_app/view/widgets/glitch.dart';
-
 import '../../../constants.dart';
 import '../../widgets/Input_Text.dart';
 
@@ -107,8 +103,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    if(authenticationController.profileImage !=null
-                        && setpasswordController.text.isNotEmpty
+                    if(setpasswordController.text.isNotEmpty
                         && usernameController.text.isNotEmpty
                         && emailController.text.isNotEmpty
                     ){
@@ -117,6 +112,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                         usernameController.text,
                         emailController.text,
                         setpasswordController.text,
+                        context
                       );
                     }
                   },
