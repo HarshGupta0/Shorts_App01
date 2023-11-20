@@ -93,7 +93,7 @@ class AuthenticationController extends GetxController
       // Optional: You may perform additional actions or UI updates after sign-in.
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found' || e.code == 'wrong-password') {
-        Get.snackbar("SignIn Failed", "Invalid email or password.");
+        Get.snackbar("SignIn Failed", "Invalid Email or Password.");
       } else {
         Get.snackbar("SignIn Failed", "Error: ${e.message}");
       }
