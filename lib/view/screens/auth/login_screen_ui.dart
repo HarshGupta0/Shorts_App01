@@ -61,7 +61,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       passwordController.text.isNotEmpty) {
                     authenticationController.signInUser(
                         emailController.text, passwordController.text, context);
-                    Get.snackbar("Welcome User", " Login Successful");
                   }
                 },
                 child: Container(

@@ -7,11 +7,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:shorts_app/view/screens/auth/signupScreen.dart';
 import 'package:shorts_app/view/screens/home.dart';
-
 import '../model/usermodel.dart';
-
 class AuthenticationController extends GetxController
 {
   static AuthenticationController instanceAuth =Get.find();
@@ -92,7 +89,8 @@ class AuthenticationController extends GetxController
 
       // Optional: You may perform additional actions or UI updates after sign-in.
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found' || e.code == 'wrong-password') {
+      if (e.code == 'INVALID_LOGIN_CREDENTIALS' || e.code == 'wrong-password') {
+
         Get.snackbar("SignIn Failed", "Invalid Email or Password.");
       } else {
         Get.snackbar("SignIn Failed", "Error: ${e.message}");
