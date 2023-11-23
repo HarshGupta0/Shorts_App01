@@ -4,6 +4,8 @@ import 'package:shorts_app/constants.dart';
 import 'package:shorts_app/view/screens/AddCaption_screen.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
+
+import '../../Controller/VideoUploadContoller.dart';
 class addVideoScreen extends StatelessWidget {
   addVideoScreen({Key? key}) : super(key: key);
   videoPick(ImageSource src , BuildContext context) async{
@@ -42,7 +44,10 @@ class addVideoScreen extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: InkWell(
-          onTap: () => showDialogOpt(context),
+          onTap: (){
+            showDialogOpt(context);
+            VideoUploadController().videoFile();
+          },
           child: Container(
             width: 190,
             height: 50,
