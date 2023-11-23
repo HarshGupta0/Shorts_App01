@@ -18,6 +18,8 @@ class AuthenticationController extends GetxController
    final pickedImageFile =await ImagePicker().pickImage(source: ImageSource.gallery);
    if(profileImage !=null){
      Get.snackbar("Profile Image"," Successfully Selected Profile image");
+   }else{
+     Get.snackbar("Profile Image"," Not Selected");
    }
     _pickedFile=Rx<File?>(File(pickedImageFile!.path));
   }

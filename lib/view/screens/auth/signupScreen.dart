@@ -29,11 +29,12 @@ class SignUpScreenState extends State<SignUpScreen> {
               children: [
                 GlithEffect(
                     child: Text(
-                  "Welcome !!",
+                  "Welcome!!",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
-                      fontSize: 30),
+                      fontSize: 33
+                  ),
                 )),
                 SizedBox(
                   height: 30,
@@ -78,7 +79,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                 InputText(
                   controller: emailController,
                   myIcon: Icons.email_outlined,
-                  MylableText: "Email",
+                  MylableText: "EMAIL",
                 ),
                 SizedBox(
                   height: 20,
@@ -96,7 +97,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                   controller: ConfirmpasswordController,
                   myIcon: Icons.password_sharp,
                   toHide: true,
-                  MylableText: "confirm Password",
+                  MylableText: "Confirm Password",
                 ),
                 SizedBox(
                   height: 50,
@@ -115,11 +116,12 @@ class SignUpScreenState extends State<SignUpScreen> {
                         context
                       );
                     }
+                    // if(authenticationController.createAccountForNewUser()){}
                   },
                   child: Container(
                     alignment: Alignment.center,
-                    width: 60,
-                    child: Text("Register"),
+                    width: 65,
+                    child: Text(" Register "),
                   ),
                   style: ElevatedButton.styleFrom(primary: buttonColor),
                 ),
