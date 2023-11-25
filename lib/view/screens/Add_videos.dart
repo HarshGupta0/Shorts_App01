@@ -44,6 +44,7 @@ class addVideoScreen extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: InkWell(
+          // onTap: () => showDialogOpt(context),
           onTap: (){
             showDialogOpt(context);
             VideoUploadController().videoFile();

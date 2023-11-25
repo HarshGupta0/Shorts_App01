@@ -35,7 +35,7 @@ class VideoUploadController extends GetxController {
       String downloadURL = await storageReference.getDownloadURL();
 
       // Optionally, you can use the download URL for further processing
-      print('Video uploaded. Download URL: $downloadURL');
+      print('Video uploaded. DownloadURL: $downloadURL');
 
       // Clear the selected video file
       videoFile.value = null;
