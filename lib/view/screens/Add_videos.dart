@@ -50,14 +50,14 @@ class addVideoScreen extends StatelessWidget {
           //   VideoUploadController().videoFile();
           // },
           child: Container(
-            width: 190,
-            height: 50,
+            width: 180,
+            height: 45,
             decoration: BoxDecoration(
                 color: buttonColor
             ),
             child: Center(
               child: Text("Add Video" , style: TextStyle(
-                  fontSize: 25,
+                  fontSize: 24,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
               ),),
