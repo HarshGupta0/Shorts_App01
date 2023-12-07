@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:shorts_app/constants.dart';
 import 'package:video_player/video_player.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+
 
 class addCaption extends StatefulWidget {
   File videoFile;

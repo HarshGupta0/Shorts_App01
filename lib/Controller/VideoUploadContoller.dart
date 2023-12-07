@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
-import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 class VideoUploadController extends GetxController {
   Rx<File?> videoFile = Rx<File?>(null);
@@ -46,4 +45,21 @@ class VideoUploadController extends GetxController {
       print('Error uploading video: $e');
     }
   }
+
+  void deleteSelectedVideo() {
+    if (videoFile.value != null) {
+      try {
+        // Delete the selected video file
+        videoFile.value!.deleteSync();
+
+        // Clear the selected video file
+        videoFile.value = null;
+
+        print('Selected video deleted.');
+      } catch (e) {
+        print('Error deleting selected video: $e');
+      }
+    }
+  }
 }
+
