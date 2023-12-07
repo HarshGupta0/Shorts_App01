@@ -1,98 +1,134 @@
 import 'dart:io';
-import 'package:shorts_app/constants.dart';
-import 'package:video_player/video_player.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:video_player/video_player.dart';
 
+import '../../Controller/VideoUploadContoller.dart';
 
-class addCaption extends StatefulWidget {
-  File videoFile;
-  String videoPath;
+class AddCaption extends StatefulWidget {
+  final File videoFile;
 
-  addCaption({
+  AddCaption({
     Key? key,
     required this.videoFile,
-    required this.videoPath,
   }) : super(key: key);
 
   @override
-  State<addCaption> createState() => addCaptionState();
+  State<AddCaption> createState() => _AddCaptionState();
 }
 
-class addCaptionState extends State<addCaption> {
-  late VideoPlayerController videoPlayerController;
-  TextEditingController SongNameController =new TextEditingController();
-  TextEditingController CaptionNameController =new TextEditingController();
+class _AddCaptionState extends State<AddCaption> {
+  late VideoPlayerController _videoPlayerController;
+  TextEditingController _songNameController = TextEditingController();
+  TextEditingController _captionNameController = TextEditingController();
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    setState(() {
-      videoPlayerController = VideoPlayerController.file(widget.videoFile);
-    });
-    videoPlayerController.initialize();
-    videoPlayerController.play();
-    videoPlayerController.setLooping(true);
-    videoPlayerController.setVolume(.7);
+    _videoPlayerController = VideoPlayerController.file(widget.videoFile)
+      ..initialize().then((_) {
+        setState(() {});
+        _videoPlayerController.play();
+        _videoPlayerController.setLooping(true);
+        _videoPlayerController.setVolume(.7);
+      });
   }
 
+  @override
+  void dispose() {
+    _videoPlayerController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // resizeToAvoidBottomInset: false,
-        body: Container(
-          margin: EdgeInsets.all(30),
-          child: SingleChildScrollView(
-            child: Column(
-
-      children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height / 1.5,
-              child: VideoPlayer(videoPlayerController),
-            ),
-            SizedBox(height: 5,),
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: Column(
-                children: [
-                  TextField(
-                    controller: CaptionNameController,
-                    keyboardType: TextInputType.multiline,
-                    minLines: 1,
-                    maxLines: 6,
-                    onTap: (){
-                    },
-                    textInputAction: TextInputAction.done,
-                    decoration: InputDecoration(
-                      labelText:'Caption',
-                      icon: Icon(Icons.closed_caption),
-                      iconColor: Colors.red.shade50,
-                    ),
-                  ),
-                  SizedBox(
-                    height :15,
-                  ),
-                  TextField(
-                    controller: SongNameController,
-                    keyboardType: TextInputType.multiline,
-                    // keyboardAppearance:,
-                    onTap: (){},
-                    textInputAction: TextInputAction.done,
-                    minLines: 1,
-                    maxLines: 6,
-                    decoration: InputDecoration(
-                      labelText:'Song Name',
-                      icon: Icon(Icons.queue_music_sharp,color: Colors.red.shade50,),
-                      iconColor: Colors.red.shade50,
-                    ),
-                  ),
-                  SizedBox(height: 12,),
-                  ElevatedButton(onPressed:(){}, child:Text("Upload"),style: ElevatedButton.styleFrom(primary: buttonColor),),
-                  ],
+      body: Container(
+        margin: EdgeInsets.all(30),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height / 1.5,
+                child: VideoPlayer(_videoPlayerController),
               ),
-            )
-      ],
-    ),
+              SizedBox(height: 5),
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  children: [
+                    TextField(
+                      controller: _captionNameController,
+                      keyboardType: TextInputType.multiline,
+                      minLines: 1,
+                      maxLines: 6,
+                      onTap: () {},
+                      textInputAction: TextInputAction.done,
+                      decoration: InputDecoration(
+                        labelText: 'Caption',
+                        icon: Icon(Icons.closed_caption),
+                        iconColor: Colors.red.shade50,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    TextField(
+                      controller: _songNameController,
+                      keyboardType: TextInputType.multiline,
+                      onTap: () {},
+                      textInputAction: TextInputAction.done,
+                      minLines: 1,
+                      maxLines: 6,
+                      decoration: InputDecoration(
+                        labelText: 'Song Name',
+                        icon: Icon(
+                          Icons.queue_music_sharp,
+                          color: Colors.red.shade50,
+                        ),
+                        iconColor: Colors.red.shade50,
+                      ),
+                    ),
+                    SizedBox(height: 12),
+                    ElevatedButton(
+                      onPressed: uploadVideo,
+                      child: Text("Upload"),
+                      // style: ElevatedButton.styleFrom(primary: buttonColor),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
+  }
+
+  Future<void> uploadVideo() async {
+    try {
+      // Call the uploadVideoToFirebase method from your VideoUploadController
+      await VideoUploadController.instance.uploadVideoToFirebase(
+        _videoPlayerController.value.size! as File?,
+        _captionNameController.text,
+        _songNameController.text,
+      );
+      // Optionally, you can perform additional actions or UI updates after video upload
+      // For example, show a success message, navigate to another screen, etc.
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Video uploaded successfully!'),
+        ),
+      );
+    } catch (e) {
+      // Handle errors that occurred during the video upload process
+      print('Error uploading video: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error uploading video. Please try again.'),
+        ),
+      );
+    }
   }
 }

@@ -7,8 +7,7 @@ import 'package:shorts_app/Controller/auth_controller.dart';
 import 'package:shorts_app/constants.dart';
 import 'package:shorts_app/firebase_options.dart';
 import 'package:shorts_app/view/screens/auth/login_screen_ui.dart';
-import 'package:shorts_app/view/screens/auth/signupScreen.dart';
-import 'package:shorts_app/view/screens/home.dart';
+import 'Controller/VideoUploadContoller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,6 +15,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   ).then((value) {
     Get.put(AuthenticationController());
+    Get.put(VideoUploadController());
   });
   runApp(MyApp());
 }

@@ -5,6 +5,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:video_compress/video_compress.dart';
 
 class VideoUploadController extends GetxController {
+  static VideoUploadController get instance => Get.find<VideoUploadController>();
   Rx<File?> videoFile = Rx<File?>(null);
 
   void chooseVideo() async {
@@ -16,17 +17,18 @@ class VideoUploadController extends GetxController {
     }
   }
 
-  Future<void> uploadVideoToFirebase() async {
+  Future<void> uploadVideoToFirebase(
+      File? videoFile, String caption, String songName) async {
     try {
-      if (videoFile.value == null) {
+      if (videoFile == null) {
         // Handle case where no video is selected
         return;
       }
 
       // Compress the video before uploading
       final MediaInfo? info = await VideoCompress.compressVideo(
-        videoFile.value!.path,
-        quality: VideoQuality.DefaultQuality,
+        videoFile.path,
+        quality: VideoQuality.LowQuality,
         deleteOrigin: false, // Set to true if you want to delete the original video
       );
 
@@ -44,9 +46,6 @@ class VideoUploadController extends GetxController {
 
       // Optionally, you can use the download URL for further processing
       print('Video uploaded. DownloadURL: $downloadURL');
-
-      // Clear the selected video file
-      videoFile.value = null;
 
       // Optionally, you can perform additional actions or UI updates after video upload
     } catch (e) {
