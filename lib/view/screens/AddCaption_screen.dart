@@ -10,7 +10,7 @@ class AddCaption extends StatefulWidget {
 
   AddCaption({
     Key? key,
-    required this.videoFile,
+    required this.videoFile, required String videoPath,
   }) : super(key: key);
 
   @override

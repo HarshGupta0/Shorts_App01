@@ -12,7 +12,7 @@ class addVideoScreen extends StatelessWidget {
     final video  = await ImagePicker().pickVideo(source: src);
     if(video != null){
       Get.snackbar("Video Selected", video.path);
-      Navigator.push(context, MaterialPageRoute(builder: (context)=> addCaption(videoFile: File(video.path), videoPath: video.path)));
+      Navigator.push(context, MaterialPageRoute(builder: (context)=> AddCaption(videoFile: File(video.path), videoPath: video.path)));
 
     }else{
       Get.snackbar("Error In Selecting Video", "Please Choose A Different Video File");
