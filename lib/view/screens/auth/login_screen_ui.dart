@@ -52,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 MylableText: "password",
               ),
               SizedBox(
-                height: 50,
+                height: 52,
               ),
               ElevatedButton(
                 onPressed: () {
