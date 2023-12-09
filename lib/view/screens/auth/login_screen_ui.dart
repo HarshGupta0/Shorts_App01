@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shorts_app/Controller/auth_controller.dart';
 import 'package:shorts_app/constants.dart';
@@ -32,10 +33,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
-                    fontSize: 35),
+                    fontSize: 35.sp),
               )),
               SizedBox(
-                height: 60,
+                height: 60.h,
               ),
               InputText(
                 controller: emailController,
@@ -43,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 MylableText: "Email",
               ),
               SizedBox(
-                height: 20,
+                height: 20.h,
               ),
               InputText(
                 controller: passwordController,
@@ -52,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 MylableText: "password",
               ),
               SizedBox(
-                height: 52,
+                height: 50.h,
               ),
               ElevatedButton(
                 onPressed: () {
@@ -65,20 +66,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
                 child: Container(
                   alignment: Alignment.center,
-                  width: 60,
-                  child: Text("LOGIN"),
+                  width: 60.w,
+                  child: Text("LOGIN",style: TextStyle(fontWeight:FontWeight.w500,fontSize: 15.sp),),
                 ),
                 style: ElevatedButton.styleFrom(primary: buttonColor),
               ),
               SizedBox(
-                height: 20,
+                height: 20.h,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextButton(
                     onPressed: () {},
-                    child: Text("Forget Password ??"),
+                    child: Text("Forget Password ??",style: TextStyle(fontWeight:FontWeight.w500,fontSize: 15.sp),),
                     style: TextButton.styleFrom(
                       primary: Colors.white, // Text color
                     ),
@@ -93,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text(
                       "New User!!",
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 17.sp),
                     ),
                     style: TextButton.styleFrom(
                       primary: Colors.white, // Text color
