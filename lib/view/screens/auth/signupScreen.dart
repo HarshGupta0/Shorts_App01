@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shorts_app/Controller/auth_controller.dart';
 import 'package:shorts_app/view/widgets/glitch.dart';
 import '../../../constants.dart';
@@ -33,11 +34,11 @@ class SignUpScreenState extends State<SignUpScreen> {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
-                      fontSize: 33
+                      fontSize: 33.sp
                   ),
                 )),
                 SizedBox(
-                  height: 30,
+                  height: 30.h,
                 ),
                 InkWell(
                   onTap: (){
@@ -60,13 +61,13 @@ class SignUpScreenState extends State<SignUpScreen> {
                           },
                           icon: Icon(
                             Icons.camera_alt,
-                            size: 34,
+                            size: 34.h,
                           ),
                         )),
                   ],
                 ) ,),
                 SizedBox(
-                  height: 30,
+                  height: 30.h,
                 ),
                 InputText(
                   controller: usernameController,
@@ -74,7 +75,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                   MylableText: "USER NAME",
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 20.h,
                 ),
                 InputText(
                   controller: emailController,
@@ -82,7 +83,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                   MylableText: "EMAIL",
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 20.h,
                 ),
                 InputText(
                   controller: setpasswordController,
@@ -91,7 +92,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                   MylableText: "Set Password",
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 20.h,
                 ),
                 InputText(
                   controller: ConfirmpasswordController,
@@ -100,7 +101,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                   MylableText: "Confirm Password",
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 50.h,
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -120,7 +121,7 @@ class SignUpScreenState extends State<SignUpScreen> {
                   },
                   child: Container(
                     alignment: Alignment.center,
-                    width: 65,
+                    width: 65.w,
                     child: Text(" Register "),
                   ),
                   style: ElevatedButton.styleFrom(primary: buttonColor),
