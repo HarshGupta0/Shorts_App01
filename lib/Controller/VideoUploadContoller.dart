@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:video_compress/video_compress.dart';
 
 class VideoUploadController extends GetxController {
   static VideoUploadController get instance => Get.find<VideoUploadController>();
@@ -25,21 +24,14 @@ class VideoUploadController extends GetxController {
         return;
       }
 
-      // Compress the video before uploading
-      final MediaInfo? info = await VideoCompress.compressVideo(
-        videoFile.path,
-        quality: VideoQuality.LowQuality,
-        deleteOrigin: false, // Set to true if you want to delete the original video
-      );
-
       // Reference to the Firebase Storage bucket
       final Reference storageReference = FirebaseStorage.instance
           .ref()
           .child('videos')
           .child(DateTime.now().millisecondsSinceEpoch.toString());
 
-      // Upload the compressed video to Firebase Storage
-      await storageReference.putFile(File(info!.path!));
+      // Upload the video to Firebase Storage
+      await storageReference.putFile(videoFile);
 
       // Get the download URL of the uploaded video
       String downloadURL = await storageReference.getDownloadURL();
