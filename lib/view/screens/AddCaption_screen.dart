@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
-
 import '../../Controller/VideoUploadContoller.dart';
 
 class AddCaption extends StatefulWidget {
@@ -20,6 +19,7 @@ class _AddCaptionState extends State<AddCaption> {
   late VideoPlayerController _videoPlayerController;
   TextEditingController _songNameController = TextEditingController();
   TextEditingController _captionNameController = TextEditingController();
+  bool isUploading = false;
 
   @override
   void initState() {
@@ -90,11 +90,12 @@ class _AddCaptionState extends State<AddCaption> {
                       ),
                     ),
                     SizedBox(height: 12),
+                    isUploading?CircularProgressIndicator(color: Colors.white,):
                     ElevatedButton(
                       onPressed: () {
                         uploadVideo();
                       },
-                      child: Text("Upload"),
+                      child:Text("Upload"),
                       // style: ElevatedButton.styleFrom(primary: buttonColor),
                     ),
                   ],
@@ -109,12 +110,17 @@ class _AddCaptionState extends State<AddCaption> {
 
   Future<void> uploadVideo() async {
     try {
+      setState(() {
+        isUploading = true;
+      });
+
       // Call the uploadVideoToFirebase method from your VideoUploadController
       await VideoUploadController.instance.uploadVideoToFirebase(
         widget.videoFile,
         _captionNameController.text,
         _songNameController.text,
       );
+
       // Optionally, you can perform additional actions or UI updates after video upload
       // For example, show a success message, navigate to another screen, etc.
       ScaffoldMessenger.of(context).showSnackBar(
@@ -130,6 +136,11 @@ class _AddCaptionState extends State<AddCaption> {
           content: Text('Error uploading video. Please try again.'),
         ),
       );
+    } finally {
+      setState(() {
+        isUploading = false;
+        Navigator.pop(context);
+      });
     }
   }
 }
