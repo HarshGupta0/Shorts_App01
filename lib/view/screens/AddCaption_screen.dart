@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../Controller/VideoUploadContoller.dart';
@@ -10,7 +9,7 @@ class AddCaption extends StatefulWidget {
 
   AddCaption({
     Key? key,
-    required this.videoFile,
+    required this.videoFile, required String videoPath,
   }) : super(key: key);
 
   @override
@@ -92,7 +91,9 @@ class _AddCaptionState extends State<AddCaption> {
                     ),
                     SizedBox(height: 12),
                     ElevatedButton(
-                      onPressed: uploadVideo,
+                      onPressed: () {
+                        uploadVideo();
+                      },
                       child: Text("Upload"),
                       // style: ElevatedButton.styleFrom(primary: buttonColor),
                     ),
@@ -105,11 +106,12 @@ class _AddCaptionState extends State<AddCaption> {
       ),
     );
   }
+
   Future<void> uploadVideo() async {
     try {
       // Call the uploadVideoToFirebase method from your VideoUploadController
       await VideoUploadController.instance.uploadVideoToFirebase(
-        _videoPlayerController.dataSource!,
+        widget.videoFile,
         _captionNameController.text,
         _songNameController.text,
       );
@@ -130,33 +132,4 @@ class _AddCaptionState extends State<AddCaption> {
       );
     }
   }
-
-
-// Future<void> uploadVideo() async {
-  //   try {
-  //     // Call the uploadVideoToFirebase method from your VideoUploadController
-  //     await VideoUploadController.instance.uploadVideoToFirebase(
-  //       _videoPlayerController.dataSource,
-  //       _captionNameController.text,
-  //       _songNameController.text,
-  //     );
-  //     // Optionally, you can perform additional actions or UI updates after video upload
-  //     // For example, show a success message, navigate to another screen, etc.
-  //     ScaffoldMessenger.of(context).showSnackBar(
-  //       SnackBar(
-  //         content: Text('Video uploaded successfully!'),
-  //       ),
-  //     );
-  //   } catch (e) {
-  //     // Handle errors that occurred during the video upload process
-  //     print('Error uploading video: $e');
-  //     ScaffoldMessenger.of(context).showSnackBar(
-  //       SnackBar(
-  //         content: Text('Error uploading video. Please try again.'),
-  //       ),
-  //     );
-  //   }
-  // }
-
-
 }
