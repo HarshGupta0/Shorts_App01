@@ -17,9 +17,9 @@ class VideoUploadController extends GetxController {
   }
 
   Future<void> uploadVideoToFirebase(
-      File? videoFile, String caption, String songName) async {
+      DataSource dataSource, String caption, String songName) async {
     try {
-      if (videoFile == null) {
+      if (dataSource == null) {
         // Handle case where no video is selected
         return;
       }
@@ -31,7 +31,7 @@ class VideoUploadController extends GetxController {
           .child(DateTime.now().millisecondsSinceEpoch.toString());
 
       // Upload the video to Firebase Storage
-      await storageReference.putFile(videoFile);
+      await storageReference.putData(await dataSource.readToEnd());
 
       // Get the download URL of the uploaded video
       String downloadURL = await storageReference.getDownloadURL();
@@ -45,6 +45,8 @@ class VideoUploadController extends GetxController {
       print('Error uploading video: $e');
     }
   }
+
+
 
   void deleteSelectedVideo() {
     if (videoFile.value != null) {

@@ -10,7 +10,7 @@ class AddCaption extends StatefulWidget {
 
   AddCaption({
     Key? key,
-    required this.videoFile, required String videoPath,
+    required this.videoFile,
   }) : super(key: key);
 
   @override
@@ -105,12 +105,11 @@ class _AddCaptionState extends State<AddCaption> {
       ),
     );
   }
-
   Future<void> uploadVideo() async {
     try {
       // Call the uploadVideoToFirebase method from your VideoUploadController
       await VideoUploadController.instance.uploadVideoToFirebase(
-        _videoPlayerController.value.size! as File?,
+        _videoPlayerController.dataSource!,
         _captionNameController.text,
         _songNameController.text,
       );
@@ -131,4 +130,33 @@ class _AddCaptionState extends State<AddCaption> {
       );
     }
   }
+
+
+// Future<void> uploadVideo() async {
+  //   try {
+  //     // Call the uploadVideoToFirebase method from your VideoUploadController
+  //     await VideoUploadController.instance.uploadVideoToFirebase(
+  //       _videoPlayerController.dataSource,
+  //       _captionNameController.text,
+  //       _songNameController.text,
+  //     );
+  //     // Optionally, you can perform additional actions or UI updates after video upload
+  //     // For example, show a success message, navigate to another screen, etc.
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       SnackBar(
+  //         content: Text('Video uploaded successfully!'),
+  //       ),
+  //     );
+  //   } catch (e) {
+  //     // Handle errors that occurred during the video upload process
+  //     print('Error uploading video: $e');
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       SnackBar(
+  //         content: Text('Error uploading video. Please try again.'),
+  //       ),
+  //     );
+  //   }
+  // }
+
+
 }
