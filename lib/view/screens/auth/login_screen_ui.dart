@@ -5,7 +5,7 @@ import 'package:shorts_app/Controller/auth_controller.dart';
 import 'package:shorts_app/constants.dart';
 import 'package:shorts_app/main.dart';
 import 'package:shorts_app/view/screens/auth/signupScreen.dart';
-import 'package:shorts_app/view/screens/home.dart';
+import 'package:shorts_app/view/screens/BottomNavigation.dart';
 import 'package:shorts_app/view/widgets/Input_Text.dart';
 import 'package:shorts_app/view/widgets/glitch.dart';
 

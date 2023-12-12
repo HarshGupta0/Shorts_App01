@@ -7,8 +7,10 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:shorts_app/Controller/auth_controller.dart';
 import 'package:shorts_app/constants.dart';
 import 'package:shorts_app/firebase_options.dart';
+import 'package:shorts_app/view/screens/BottomNavigation.dart';
 import 'package:shorts_app/view/screens/auth/login_screen_ui.dart';
 import 'Controller/VideoUploadContoller.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData.dark().copyWith(
               scaffoldBackgroundColor: backgroundColor,
             ),
-            home:LoginScreen(),
+            home:FirebaseAuth.instance.currentUser==null?LoginScreen():Home(),
           );
         });
   }
