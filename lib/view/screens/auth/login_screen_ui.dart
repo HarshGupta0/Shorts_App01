@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:shorts_app/Controller/auth_controller.dart';
 import 'package:shorts_app/constants.dart';
-import 'package:shorts_app/main.dart';
 import 'package:shorts_app/view/screens/auth/signupScreen.dart';
-import 'package:shorts_app/view/screens/BottomNavigation.dart';
 import 'package:shorts_app/view/widgets/Input_Text.dart';
 import 'package:shorts_app/view/widgets/glitch.dart';
 
@@ -24,6 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: Center(
         child: Container(
+          padding:EdgeInsets.symmetric(horizontal: 10.w),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
