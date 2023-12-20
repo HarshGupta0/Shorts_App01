@@ -14,13 +14,14 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   var authenticationController = AuthenticationController.instanceAuth;
-  TextEditingController emailController = new TextEditingController();
-  TextEditingController passwordController = new TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Container(
+          margin :EdgeInsets.symmetric(horizontal: 10.w),
           padding:EdgeInsets.symmetric(horizontal: 10.w),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -67,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: 60.w,
                   child: Text("LOGIN",style: TextStyle(fontWeight:FontWeight.w500,fontSize: 15.sp),),
                 ),
-                style: ElevatedButton.styleFrom(primary: buttonColor),
+                style: ElevatedButton.styleFrom(backgroundColor: buttonColor),
               ),
               SizedBox(
                 height: 20.h,
@@ -79,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () {},
                     child: Text("Forget Password ??",style: TextStyle(fontWeight:FontWeight.w500,fontSize: 15.sp),),
                     style: TextButton.styleFrom(
-                      primary: Colors.white, // Text color
+                      backgroundColor: Colors.white, // Text color
                     ),
                   ),
                   TextButton(
@@ -89,13 +90,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           MaterialPageRoute(
                               builder: (context) => SignUpScreen()));
                     },
-                    child: Text(
+                    child:Text(
                       "New User!!",
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 17.sp),
                     ),
                     style: TextButton.styleFrom(
-                      primary: Colors.white, // Text color
+                      backgroundColor: Colors.white, // Text color
                     ),
                   ),
                 ],
