@@ -78,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   TextButton(
                     onPressed: () {},
-                    child: Text("Forget Password ??",style: TextStyle(fontWeight:FontWeight.w500,fontSize: 15.sp),),
+                    child: Text("Forget Password ??",style: TextStyle(fontWeight:FontWeight.w500,fontSize: 16.sp),),
                     style: TextButton.styleFrom(
                       backgroundColor: Colors.white, // Text color
                     ),
