@@ -16,10 +16,10 @@ class AuthenticationController extends GetxController
   File ? get profileImage => _pickedFile.value;
   void chooseImageFromGallery()async {
    final pickedImageFile =await ImagePicker().pickImage(source: ImageSource.gallery);
-   if(profileImage !=null){
+   if(profileImage != null){
      Get.snackbar("Profile Image"," Successfully Selected Profile image");
    }else{
-     Get.snackbar("Profile Image"," Not Selected");
+     Get.snackbar("Profile Image","  Successfully Selected");
    }
     _pickedFile=Rx<File?>(File(pickedImageFile!.path));
   }
@@ -32,7 +32,7 @@ class AuthenticationController extends GetxController
     _pickedFile=Rx<File?>(File(pickedImageFile!.path));
   }
 
-  void createAccountForNewUser(File imageFile, String userName, String userEmail, String userPassword,  BuildContext context
+   createAccountForNewUser(File imageFile, String userName, String userEmail, String userPassword,  BuildContext context
       ) async {
     try {
       // 1. Create user in Firebase Auth
